@@ -10,7 +10,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
+import sun.reflect.annotation.ExceptionProxy;
 //import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import javax.servlet.http.Cookie;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -191,6 +194,24 @@ public class HelloControllerTest {
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("Invalid"));
+
+    }
+
+    @Test
+    public void testCookie() throws  Exception{
+        RequestBuilder request = get("/cookies")
+                .cookie(new Cookie("foo", "bar"));
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("bar"));
+    }
+    @Test
+    public void testHeader() throws Exception{
+        RequestBuilder request = get("/header")
+                .header("Host", "example.com");
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("example.com"));
 
     }
 }

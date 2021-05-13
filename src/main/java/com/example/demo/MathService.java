@@ -38,8 +38,8 @@ public class MathService {
     }
 
 
-    public String calculateVolumn(int length, int width, int height) {
-        long volumn = length * width * height;
-        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volumn);
+    public String calculateVolume(int length, int width, int height) {
+        long volume = length * width * height;
+        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volume);
     }
 }

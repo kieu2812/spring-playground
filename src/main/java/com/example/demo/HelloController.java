@@ -73,6 +73,15 @@ public class HelloController {
 
     }
 
+    @GetMapping("/cookies")
+    public String getCookies(@CookieValue(name= "foo") String cookie){
+        return cookie;
+    }
+
+    @GetMapping("/header")
+    public String getHeader(@RequestHeader(name="Host") String host){
+        return host;
+    }
     private String calculateRectangleArea(int width, int height) {
         return String.format("Area of %dx%d rectangle is %d", width, height, width*height);
     }
@@ -113,7 +122,9 @@ public class HelloController {
     }
 
     public String calculateVolume(int length, int width, int height) {
-        int volumn = length * width * height;
-        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volumn);
+        int volume = length * width * height;
+        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volume);
     }
+
+
 }
