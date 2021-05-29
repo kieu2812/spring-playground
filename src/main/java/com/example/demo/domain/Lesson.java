@@ -20,5 +20,18 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String title;
+    private String deliveredOn;
+    public Lesson(int id, String title){
+        this.id = id;
+        this.title = title;
+    }
 
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", deliveredOn='" + deliveredOn + '\'' +
+                '}';
+    }
 }
